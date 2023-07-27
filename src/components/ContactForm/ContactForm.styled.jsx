@@ -15,7 +15,7 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
-  color: #FFF;
+  color: #fff;
   text-align: left;
   font-family: 'lato', sans-serif;
   font-weight: 300;
@@ -41,57 +41,81 @@ export const Input = styled.input`
   color: rgba(0, 0, 0, 1);
 `;
 
-const moveButton = keyframes`
+const glowingAnimation = keyframes`
   0% {
-    transform: translateY(0);
+    background-position: 0 0;
   }
   50% {
-    transform: translateY(-10px);
+    background-position: 400% 0;
   }
   100% {
-    transform: translateY(0);
-  }
-`;
-
-const hoverButton = keyframes`
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-3px);
-  }
-  100% {
-    transform: translateY(0);
+    background-position: 0 0;
   }
 `;
 
 export const SubmitButton = styled.button`
-  display: block;
-  margin: 0 auto;
+  width: 220px;
+  height: 50px;
   line-height: 28pt;
-  padding: 0 20px;
-  background: #ffa580;
-  letter-spacing: 2px;
-  transition: 0.2s all ease-in-out;
+  border: 2px solid rgba(248, 244, 229, 0.9);
   outline: none;
-  border: 1px solid rgba(0, 0, 0, 1);
-  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  overflow: hidden;
 
-   &:hover {
-    animation: ${hoverButton} 0.5s ease-in-out;
-    background: #fae820;
-    box-shadow: 3px 3px 1px 1px #1e3efc, 3px 3px 1px 2px rgba(0, 0, 0, 1);
-  }
-    &:focus {
-    animation: ${hoverButton} 0.5s ease-in-out;
-    background: #fae820;
-    box-shadow: 3px 3px 1px 1px #1e3efc, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+  &:before {
+    content: '';
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: ${glowingAnimation} 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
   }
 
-   &:active {
-    animation: ${moveButton} 0.5s ease-in-out;
-    background: #fa553c;
-    box-shadow: 3px 3px 1px 1px #1e3efc, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+  &:active {
+    color: #000;
   }
 
+  &:active:after {
+    background: transparent;
+  }
+
+  &:hover:before {
+    opacity: 1;
+  }
+
+  &:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
 `;
