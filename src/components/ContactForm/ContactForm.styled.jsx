@@ -57,7 +57,6 @@ export const SubmitButton = styled.button`
   width: 220px;
   height: 50px;
   line-height: 28pt;
-  border: 0.5px solid rgba(248, 244, 229, 0.9);
   outline: none;
   color: #fff;
   background: #111;

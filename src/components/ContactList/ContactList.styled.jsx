@@ -43,7 +43,6 @@ export const DeleteButton = styled.button`
   margin-right: 0px;
   padding: 0px 20px;
   line-height: 36pt;
-  border: 0.5px solid rgba(248, 244, 229, 0.9);
   outline: none;
   color: #fff;
   background: #111;
